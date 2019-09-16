@@ -14,19 +14,19 @@ export default class SaleService {
         query += includeTotal ? `includeTotal=${includeTotal}&` : "";
         
         if (tag) {
-            query += tag ? `tag=${tag}&` : "";
+            query += tag ? `tags=${tag}&` : "";
         }
         if (price) {
-            query += price ? `price=${price}&` : "";
+            query += price ? `precio=${price}&` : "";
         }
         if (name) {
-            query += name ? `name=${name}&` : "";
+            query += name ? `nombre=${name}&` : "";
         }
 
-        console.log(`query1 ${query}`);
         // Eliminamos el último & de la query
         query = query.substr(0, query.length - 1);
-        console.log(`query2 ${query}`);
+
+        console.log(`${HOST}/${API}/anuncios${query}`)
 
         return fetch(`${HOST}/${API}/anuncios${query}`, {
             method: "GET"

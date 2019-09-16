@@ -36,23 +36,15 @@ export default class SaleSearch extends React.Component {
 
     search() {
         // 2. Llamar al servicio service.getSales(this.state.search), gestionar su petición y añadir al estado su resultado
-        console.log(`search: ${this.state.search.name}, ${this.state.search.price} ${this.state.search.tag}`)
+
         const { name, price, tag } = this.state.search
         console.log(`search: ${name}, ${price} ${tag}`)
-        // service.getSales({}).then((res) => {
-        //      const items = res.result.rows;
-        //      console.log(`search: ${items}`)
-
-        //     let item = items.find((item) => item._id === this.props.match.params.id);
-
-        //     if (!item) {
-        //         this.props.history.goBack();
-        //     }
-
-        //     this.setState({
-        //         item
-        //     })
-        //  });
+        service.getSales({start: null,limit: null, sort: null, includeTotal: null, tag: tag, price: price, name: name}).then((res) => {
+            if (res.anuncios.length > 0) {
+                console.log(`Success Search ${res.anuncios[0].nombre}`)
+                this.setState({ search: res.anuncios })
+            }
+        })
     }
 
     handleSearch(event) {
@@ -75,7 +67,7 @@ export default class SaleSearch extends React.Component {
                 <div className="row mb-3">
                     <input name="name" onChange={this.handleSearch} className={`form-control col-2 ml-4`} placeholder={`Filter by name`}/>
                     <input name="price" type="number" onChange={this.handleSearch} className={`form-control col-1 ml-4`} placeholder={`Price`}/>
-                    <Tags name="tag" value={this.state.search.tag} onChange={this.handleSearch} className={`form-control col-2 ml-4`}/>
+                    <Tags name="tag" value={this.state.search.tag} onTagChange={this.handleSearch} className={`form-control col-2 ml-4`}/>
                     {/* {
                         this.state.tags
                         &&
