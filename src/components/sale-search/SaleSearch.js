@@ -2,6 +2,7 @@ import React from "react";
 import './SaleSearch.css'
 import SaleService from "../../services/SaleService";
 import SaleItem from "../sale-item/SaleItem";
+import Tags from "../tags/Tags";
 
 const service = new SaleService();
 
@@ -24,13 +25,13 @@ export default class SaleSearch extends React.Component {
         // Retrieve the tags needed to filter sales
         // 1. Este servicio como el <select> que hay en el render se pueden sustituir por el componente <Tags>
         // 1. Para más información de como se usa ver el componente SignIn
-        service.getTags().then((res) => {
-            if (res.ok) {
-                this.setState({
-                    tags: res.allowedTags
-                })
-            }
-        });
+        // service.getTags().then((res) => {
+        //     if (res.ok) {
+        //         this.setState({
+        //             tags: res.allowedTags
+        //         })
+        //     }
+        // });
     }
 
     search() {
@@ -56,14 +57,15 @@ export default class SaleSearch extends React.Component {
                 <div className="row mb-3">
                     <input name="name" onChange={this.handleSearch} className={`form-control col-2 ml-4`} placeholder={`Filter by name`}/>
                     <input name="price" type="number" onChange={this.handleSearch} className={`form-control col-1 ml-4`} placeholder={`Price`}/>
-                    {
+                    <Tags name="tag" value={this.state.search.tag} onChange={this.handleSearch} className={`form-control col-2 ml-4`}/>
+                    {/* {
                         this.state.tags
                         &&
                         <select name="tag" value={this.state.search.tag} onChange={this.handleSearch} className={`form-control col-2 ml-4`}>
                             <option value="">Filter by tag</option>
                             {this.state.tags.map((tag, index) => <option key={`${tag}-${index}`} value={tag}>{tag}</option>)}
                         </select>
-                    }
+                    } */}
                 </div>
 
                 {
