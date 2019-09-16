@@ -36,10 +36,28 @@ export default class SaleSearch extends React.Component {
 
     search() {
         // 2. Llamar al servicio service.getSales(this.state.search), gestionar su petición y añadir al estado su resultado
+        console.log(`search: ${this.state.search.name}, ${this.state.search.price} ${this.state.search.tag}`)
+        const { name, price, tag } = this.state.search
+        console.log(`search: ${name}, ${price} ${tag}`)
+        // service.getSales({}).then((res) => {
+        //      const items = res.result.rows;
+        //      console.log(`search: ${items}`)
+
+        //     let item = items.find((item) => item._id === this.props.match.params.id);
+
+        //     if (!item) {
+        //         this.props.history.goBack();
+        //     }
+
+        //     this.setState({
+        //         item
+        //     })
+        //  });
     }
 
     handleSearch(event) {
         const {name, value} = event.target;
+        console.log(`name ${name} value ${value}`);
 
         this.setState({
             search: {

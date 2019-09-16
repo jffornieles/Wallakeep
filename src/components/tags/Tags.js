@@ -15,9 +15,9 @@ export default class Tags extends Component {
         };
 
         service.getTags().then((res) => {
-            if (res.ok) {
+            if (res.success) {
                 this.setState({
-                    tags: res.allowedTags
+                    tags: res.result
                 })
             }
         });
