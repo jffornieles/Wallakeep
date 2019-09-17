@@ -1,7 +1,7 @@
 import React from "react";
 import './SignIn.css';
 import Tags from "../tags/Tags";
-import {USER_SESSION_KEY} from "../../services/Util";
+import {USER_SESSION_KEY, signedIn, isOldThan18YearsOld} from "../../services/Util";
 import {withRouter} from "react-router-dom";
 
 class SignIn extends React.Component {
@@ -9,6 +9,9 @@ class SignIn extends React.Component {
         super(props);
 
         // 3. Comprobar si ya ha iniciado sesión, si es así redirigir a /home
+        if (signedIn()) {
+            props.history.push("/home")
+        }
 
         this.state = {
             name: "",
@@ -34,6 +37,21 @@ class SignIn extends React.Component {
         const {name, surname, birthday, tag} = this.state;
 
         // 3. Realizar las validaciones de name, surname y birthday. Debe ser mayor de 18 años
+
+        if (!isOldThan18YearsOld(birthday)) {
+            alert("Age should be great than 18");
+            return;
+        }
+
+        if (name.trim().length === 0) {
+            alert("Length of name should be great than 0 characters");
+            return;
+        }
+
+        if (surname.trim().length === 0) {
+            alert("Length of surname should be great than 0 characters");
+            return;
+        }
 
         sessionStorage.setItem(USER_SESSION_KEY, JSON.stringify({
             name: name.trim(),
