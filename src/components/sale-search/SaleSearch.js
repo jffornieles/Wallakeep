@@ -3,6 +3,7 @@ import './SaleSearch.css'
 import SaleService from "../../services/SaleService";
 import SaleItem from "../sale-item/SaleItem";
 import Tags from "../tags/Tags";
+import {checkIfUserHasSignIn, currentUser} from "../../services/Util";
 
 const service = new SaleService();
 
@@ -11,10 +12,12 @@ export default class SaleSearch extends React.Component {
         super(props);
 
         // 3. Comprobar que el usuario se ha registrado
+        checkIfUserHasSignIn(this.props.history)
 
         // 3. Si el usuario especificó un tag en el registro, se debe añadir por defecto a la búsqueda
+        console.log(`tag: ${currentUser().tag}`);
         this.state = {
-            search: {}
+            search: {tag: currentUser().tag}
         };
 
         this.search();
@@ -35,6 +38,7 @@ export default class SaleSearch extends React.Component {
     }
 
     search() {
+        console.log(`Search ${this.state.search.tag}`)
         // 2. Llamar al servicio service.getSales(this.state.search), gestionar su petición y añadir al estado su resultado
 
         const { name, price, tag } = this.state.search

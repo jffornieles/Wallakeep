@@ -1,12 +1,14 @@
 import React from "react";
 import "./ContactUsForm.css";
+import {checkIfUserHasSignIn, currentUser} from "../../services/Util";
 
 // 3. El nombre y apellidos del formulario deben inicializarse a los valores del nombre y apellidos del currentUser()
 
 const initialState = () => {
+    const {name, surname} = currentUser()
     return {
-        name: '',
-        surname: '',
+        name: name,
+        surname: surname,
         subject: '',
         message: ''
     }
@@ -17,6 +19,7 @@ export default class ContactUsForm extends React.Component {
         super(props);
 
         // 3. Comprobar que el usuario se ha registrado
+        checkIfUserHasSignIn(this.props.history)
 
         this.state = initialState();
 

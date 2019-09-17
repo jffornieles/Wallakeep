@@ -5,13 +5,15 @@ import SaleSearch from "../sale-search/SaleSearch";
 import SaleItemFullScreen from "../sale-item-full-screen/SaleItemFullScreen";
 import ContactUs from "../contact-us/ContactUs";
 import {Route} from "react-router-dom";
-import ErrorBoundary from "../ErrorBoundary"
+import ErrorBoundary from "../ErrorBoundary";
+import {checkIfUserHasSignIn} from "../../services/Util";
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
 
         // 3. Comprobar que el usuario se ha registrado
+        checkIfUserHasSignIn(this.props.history)
     }
 
     render() {
