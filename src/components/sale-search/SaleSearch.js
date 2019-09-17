@@ -15,7 +15,6 @@ export default class SaleSearch extends React.Component {
         checkIfUserHasSignIn(this.props.history)
 
         // 3. Si el usuario especificó un tag en el registro, se debe añadir por defecto a la búsqueda
-        console.log(`tag: ${currentUser().tag}`);
         this.state = {
             search: {tag: currentUser().tag}
         };
@@ -45,15 +44,13 @@ export default class SaleSearch extends React.Component {
         console.log(`search: ${name}, ${price} ${tag}`)
         service.getSales({start: null,limit: null, sort: null, includeTotal: null, tag: tag, price: price, name: name}).then((res) => {
             if (res.anuncios.length > 0) {
-                console.log(`Success Search ${res.anuncios[0].nombre}`)
-                this.setState({ search: res.anuncios })
+                this.setState({ sales: res.anuncios })
             }
         })
     }
 
     handleSearch(event) {
         const {name, value} = event.target;
-        console.log(`name ${name} value ${value}`);
 
         this.setState({
             search: {

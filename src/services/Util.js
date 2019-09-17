@@ -11,8 +11,6 @@ export const EIGHTEEN_YEARS_IN_MILLISECONDS = 18 * 365 * 24 * 60 * 60 * 1000;
 
 export const isOldThan18YearsOld = (birthday) => {
     const past = new Date(Date.now() - EIGHTEEN_YEARS_IN_MILLISECONDS).getTime();
-    console.log(`Past: ${past}`);
-    console.log(`Now: ${new Date(birthday).getTime()}`);
     return new Date(birthday).getTime() <= past;
 };
 
