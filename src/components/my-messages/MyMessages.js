@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {MessageContext} from "../tags/Tags";
 
 export default class MyMessages extends Component {
+
     render() {
         let messages = this.context;
 
@@ -20,6 +22,16 @@ export default class MyMessages extends Component {
                         </th>
                     </tr>
                     {/*4. Mostrar los mensajes en la tabla a través de una función map*/}
+                        {messages.map((message) => (
+                            <tr>
+                                <td>
+                                    {message.subject}
+                                </td>
+                                <td>
+                                    {message.message}
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
@@ -28,3 +40,6 @@ export default class MyMessages extends Component {
 }
 
 // 4. Añadir el contextType para que así el componente pueda usar el contexto (MyMessages.contextType...)
+
+MyMessages.contextType = MessageContext;
+

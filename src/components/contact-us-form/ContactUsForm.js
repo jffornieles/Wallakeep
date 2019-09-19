@@ -56,6 +56,8 @@ export default class ContactUsForm extends React.Component {
             alert("Message not be should empty")
             return
           }
+
+          this.props.onSubmit(this.state);
     
     }
 

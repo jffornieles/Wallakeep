@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SaleService from "../../services/SaleService";
+export const MessageContext = React.createContext();
 
 
 // ESTE FICHERO NO HAY QUE TOCARLO

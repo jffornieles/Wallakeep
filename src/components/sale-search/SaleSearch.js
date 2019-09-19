@@ -37,7 +37,6 @@ export default class SaleSearch extends React.Component {
     }
 
     search() {
-        console.log(`Search ${this.state.search.tag}`)
         // 2. Llamar al servicio service.getSales(this.state.search), gestionar su petición y añadir al estado su resultado
 
         const { name, price, tag } = this.state.search
@@ -51,7 +50,7 @@ export default class SaleSearch extends React.Component {
 
     handleSearch(event) {
         const {name, value} = event.target;
-
+        
         this.setState({
             search: {
                 [name]: value.trim().length ? value.trim() : null
@@ -94,7 +93,7 @@ export default class SaleSearch extends React.Component {
                             {
                                 this.state.sales.map((sale, index) => {
                                     return (
-                                        <div key={sale._id} className="col-4" onClick={() => this.props.history.push(`/sale/${sale._id}`)}>
+                                        <div key={sale._id} className="col-4" onClick={() => this.props.history.push(`sale/${sale._id}`)}>
                                             <SaleItem item={sale}/>
                                         </div>
                                     )

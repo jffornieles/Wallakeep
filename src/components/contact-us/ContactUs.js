@@ -3,6 +3,7 @@ import './ContactUs.css';
 import {getSavedMessages, saveMessages, checkIfUserHasSignIn} from "../../services/Util";
 import ContactUsForm from "../contact-us-form/ContactUsForm";
 import MyMessages from "../my-messages/MyMessages";
+import {MessageContext} from "../tags/Tags";
 
 export default class ContactUs extends React.Component {
     constructor(props) {
@@ -37,7 +38,9 @@ export default class ContactUs extends React.Component {
                     </div>
                     <div className="col-6 text-center">
                         {/*4. Es necesario un contexto para poder pasarle los mensajes*/}
+                        <MessageContext.Provider value={this.state.messages}>
                         <MyMessages/>
+                        </MessageContext.Provider>
                     </div>
                 </div>
             </div>

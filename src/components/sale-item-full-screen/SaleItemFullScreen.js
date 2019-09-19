@@ -11,7 +11,7 @@ const service = new SaleService();
 export default class SaleItemFullScreen extends React.Component {
     constructor(props) {
         super(props);
-
+        console.log("SaleItemFullScreen");
         this.state = {
             item: {}
         };
@@ -21,10 +21,8 @@ export default class SaleItemFullScreen extends React.Component {
         // of one sale
         // DON'T DO IT in real application, this is only educational purpose
         service.getSales({}).then((res) => {
-            const items = res.result.rows;
-
+            const items = res.anuncios;
             let item = items.find((item) => item._id === this.props.match.params.id);
-
             if (!item) {
                 this.props.history.goBack();
             }
