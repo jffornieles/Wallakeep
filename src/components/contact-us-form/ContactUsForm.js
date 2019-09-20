@@ -57,6 +57,11 @@ export default class ContactUsForm extends React.Component {
             return
           }
 
+          this.setState({
+            subject: "",
+            message: ""
+          });
+
           this.props.onSubmit(this.state);
     
     }

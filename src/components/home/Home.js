@@ -48,7 +48,7 @@ export default class Home extends React.Component {
                     </div>)} />
                     <Route exact path={`${this.props.match.path}/search`} component={SaleSearch} />
                     {/*1. Crear la ruta correspondiente a el componente SaleItemFullScreen, para más información ver el componente.*/}
-                    <Route exact path={`${this.props.match.path}/sale-item-full-screen`} component={SaleItemFullScreen} />
+                    <Route exact path={`${this.props.match.path}/sale/:id`} component={SaleItemFullScreen} />
                     <Route exact path={`${this.props.match.path}/contact-us`} component={ContactUs} />
                 </ErrorBoundary>
             </div>
