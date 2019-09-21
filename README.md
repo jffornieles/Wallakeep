@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Wallakeep App
+
+## Description
+Project created for the KeepCoding Mobile Bootcamp, this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+> **Note:** First you must download the app Nodepop on the next URL and follow the instructions (file README) for run it:
+https://github.com/jffornieles/nodepop.git
+
 
 ## Available Scripts
 
@@ -8,6 +15,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> **Note:** Nodepop run in [http://localhost:3000](http://localhost:3000), if Nodepop is running then Wallakeep ask you if you want to run the app on another port instead, for example [http://localhost:3001](http://localhost:3001)
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
